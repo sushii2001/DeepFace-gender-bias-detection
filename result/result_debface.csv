@@ -1,3 +1,5 @@
-Model,Gender,Age,Accuracy,Total Images,Undetected
-ArcFace,Woman,41,40.0,25,0
-ArcFace,Man,41,100.0,89,0
+Dataset,Gender,Age,Accuracy,Total Images,Undetected
+UTKFace,Woman,30,51.0,243,0
+UTKFace,Man,30,99.0,347,0
+AFAD/AFAD-new,Man,41,100.0,89,0
+AFAD/AFAD-new,Woman,41,40.0,25,0
