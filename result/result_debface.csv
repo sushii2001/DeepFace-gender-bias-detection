@@ -1,3 +1,6 @@
-Dataset,Gender,Age,Accuracy,Total Images,Undetected
-AFAD,Man,33,99.58,2597,0
-AFAD,Woman,33,35.96,1104,0
+Model,Dataset,CM_ACC,Precision,Recall,Total Images
+VGG-Face,LFW,88.0,100.0,88.0,9164
+Facenet,LFW,65.0,100.0,65.0,9164
+OpenFace,LFW,1.0,100.0,1.0,9164
+DeepFace,LFW,26.0,100.0,26.0,9164
+ArcFace,LFW,83.0,100.0,83.0,9164
