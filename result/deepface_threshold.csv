@@ -1,0 +1,5 @@
+Model,DATASET,CM_ACC,Precision,Recall
+VGG-Face,LFW,87.0,82.0,95.0
+Facenet,LFW,85.0,100.0,70.0
+OpenFace,LFW,70.0,72.0,66.0
+Deepface,LFW,60.0,84.0,24.0
