@@ -1,0 +1,9 @@
+Model,Dataset,CM_ACC,Precision,Recall,Total Images,Gender
+Facenet,LFW_gender,79.0,100.0,57.99999999999999,4489,Male
+Facenet,LFW_gender,78.0,99.0,56.99999999999999,1511,Female
+VGG-Face,LFW_gender,92.0,96.0,88.0,1511,Female
+VGG-Face,LFW_gender,84.0,77.0,95.0,4489,Male
+OpenFace,LFW_gender,59.0,88.0,23.0,1511,Female
+OpenFace,LFW_gender,55.00000000000001,85.0,12.0,4489,Male
+DeepFace,LFW_gender,61.0,79.0,33.0,1511,Female
+DeepFace,LFW_gender,65.0,76.0,44.0,4489,Male
