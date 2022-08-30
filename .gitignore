@@ -1,3 +1,4 @@
 data/
 additional-data/
 weights/
+*/__pycache__/
