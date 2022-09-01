@@ -9,7 +9,8 @@ class Buttons:
         self.value = value
         self.results_fr = pd.read_csv('./result/deepface_gui_face_recognition.csv')
         self.results_gender = pd.read_csv('./result/deepface_gui_gender.csv')
-        self.results_lfw = pd.read_csv('./result/deepface_benchmark_mod.csv')
+        # self.results_lfw = pd.read_csv('./result/deepface_benchmark_mod.csv')
+        self.results_lfw = pd.read_csv('./result/deepface_benchmark_gender.csv')
 
     def test_btn_sample(self, accuracy, updated_accuracy, gender, gender_value, dataset_current):
         if dataset_current == "LFW (Male)":

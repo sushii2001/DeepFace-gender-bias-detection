@@ -22,7 +22,8 @@ class Model_menu:
         self.model_value.set(Model_menu.MODELS_OPTIONS[0])  # initial menu text
         self.window = window
         self.dataset_value = dataset_value
-        self.results_lfw = pd.read_csv('./result/deepface_benchmark_mod.csv')
+        # self.results_lfw = pd.read_csv('./result/deepface_benchmark_mod.csv')
+        self.results_lfw = pd.read_csv('./result/deepface_benchmark_gender.csv')
 
     def create(self, x, y):
         drop = OptionMenu(
