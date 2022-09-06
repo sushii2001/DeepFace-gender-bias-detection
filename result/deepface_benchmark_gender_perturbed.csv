@@ -1,0 +1,2 @@
+Model,Dataset,CM_ACC,Precision,Recall,Total Images,TP,TN,FP,FN,Undetected
+Facenet512,LFW_gender_makeup_heavy,88.0,96.0,80.0,494,195,240,9,50,339
