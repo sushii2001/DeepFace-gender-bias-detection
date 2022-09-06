@@ -21,11 +21,11 @@ import os
 
 
 ######## 1. BENCHMARK GENDER SPLIT TESTING ########
-def find_image(dataset_path, img_name, img_num):
+def find_image(dataset_path, img_name, img_num, test_gender):
     pathA = f'{dataset_path}/Female/{img_name}/{img_name}_{img_num}.jpg'
     pathB = f'{dataset_path}/Male/{img_name}/{img_name}_{img_num}.jpg'
     path_truth = None
-    gender = None
+    gender = test_gender
     
     if os.path.exists(pathA):
         path_truth = pathA
@@ -54,7 +54,13 @@ def deepface_benchmark_lfw_split(dataset, dataset_path, benchmark_df, model_used
     match_case = None
 
     for index, row in benchmark_df.iterrows():
-        
+
+        # Male: 2~1501, Female: 1502~3001
+        if test_gender == "Female" and index+1 <= 1500:
+            continue
+        elif test_gender == "Male" and index+1 == 1501:
+            break
+
         flag = str(row[3])
 
         try:
@@ -65,8 +71,8 @@ def deepface_benchmark_lfw_split(dataset, dataset_path, benchmark_df, model_used
                 img_name_b = img_name_a
                 img_num_2 = f'{int(row["imagenum2"]):04d}'
 
-                img_path_1, gender_1 = find_image(dataset_path, img_name_a, img_num_1)
-                img_path_2, gender_2 = find_image(dataset_path, img_name_a, img_num_2)
+                img_path_1, gender_1 = find_image(dataset_path, img_name_a, img_num_1, test_gender)
+                img_path_2, gender_2 = find_image(dataset_path, img_name_a, img_num_2, test_gender)
                 match_case = True
             
             else:
@@ -75,12 +81,18 @@ def deepface_benchmark_lfw_split(dataset, dataset_path, benchmark_df, model_used
                 img_name_b = f'{row["imagenum2"]}'
                 img_num_2 = f'{int(row[3]):04d}'
 
-                img_path_1, gender_1 = find_image(dataset_path, img_name_a, img_num_1)
-                img_path_2, gender_2 = find_image(dataset_path, img_name_b, img_num_2)
+                img_path_1, gender_1 = find_image(dataset_path, img_name_a, img_num_1, test_gender)
+                img_path_2, gender_2 = find_image(dataset_path, img_name_b, img_num_2, test_gender)
                 match_case = False  
 
             # Deepface face recognition test: 
             if test_gender == gender_1:
+
+                if not (img_path_1 and img_path_2):
+                    undetected += 1
+                    perturbed_error.append({"img_name_a": img_name_a, "img_path_1": img_path_1, "img_name_b": img_name_b, "img_path_2": img_path_2, "Error": ""})
+                    continue
+
                 # verification = DeepFace.verify(img1_path = img_path_1, img2_path = img_path_2, model_name=MODEL, enforce_detection=False)
                 verification = DeepFace.verify(img1_path = img_path_1, 
                                                 img2_path = img_path_2, 
