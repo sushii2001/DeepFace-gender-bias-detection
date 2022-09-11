@@ -21,9 +21,19 @@ import os
 
 
 ######## 1. BENCHMARK GENDER SPLIT TESTING ########
+def get_name(image_file):
+    try:
+        match = re.search(f"_\d.*\.jpg", image_file)
+        name = image_file.replace(match.group(0), "")
+        
+    except AttributeError:
+        print("IMAGE: " + image_file)
+        exit(1)
+    return name
+
 def find_image(dataset_path, img_name, img_num, test_gender):
-    pathA = f'{dataset_path}/Female/{img_name}/{img_name}_{img_num}.jpg'
-    pathB = f'{dataset_path}/Male/{img_name}/{img_name}_{img_num}.jpg'
+    pathA = f'{dataset_path}/Female/{img_name}/{img_num}'
+    pathB = f'{dataset_path}/Male/{img_name}/{img_num}'
     path_truth = None
     gender = test_gender
     
@@ -50,79 +60,76 @@ def deepface_benchmark_lfw_split(dataset, dataset_path, benchmark_df, model_used
     """
 
     tp, tn, fp, fn = 0, 0, 0, 0
-    iteration, undetected, perturbed_error = 0, 0, []
-    match_case = None
+    iteration, undetected = 0, 0
 
     for index, row in benchmark_df.iterrows():
 
-        # Male: 2~1501, Female: 1502~3001
-        if test_gender == "Female" and index+1 <= 1500:
+        # Male: 2~1001, Female: 1002~2001
+        if test_gender == "Female" and index+1 <= 1000:
             continue
-        elif test_gender == "Male" and index+1 == 1501:
+        elif test_gender == "Male" and index+1 == 1001:
             break
 
-        flag = str(row[3])
+        match_case = row[0]
 
         try:
             # case identification (match or non-match)
-            if flag == "nan":
-                img_name_a = row["name"]
-                img_num_1 = f'{row["imagenum1"]:04d}'
-                img_name_b = img_name_a
-                img_num_2 = f'{int(row["imagenum2"]):04d}'
+            if match_case:
+                
+                img_name_a = get_name(row[1])
+                img_num_1 = row[1]
+                img_num_2 = row[2]
 
                 img_path_1, gender_1 = find_image(dataset_path, img_name_a, img_num_1, test_gender)
                 img_path_2, gender_2 = find_image(dataset_path, img_name_a, img_num_2, test_gender)
-                match_case = True
             
             else:
-                img_name_a = row["name"]
-                img_num_1 = f'{row["imagenum1"]:04d}'
-                img_name_b = f'{row["imagenum2"]}'
-                img_num_2 = f'{int(row[3]):04d}'
+                img_name_a = get_name(row[1])
+                img_name_b = get_name(row[2])
+                img_num_1 = row[1]
+                img_num_2 = row[2]
 
                 img_path_1, gender_1 = find_image(dataset_path, img_name_a, img_num_1, test_gender)
                 img_path_2, gender_2 = find_image(dataset_path, img_name_b, img_num_2, test_gender)
-                match_case = False  
 
             # Deepface face recognition test: 
             if test_gender == gender_1:
 
                 if not (img_path_1 and img_path_2):
                     undetected += 1
-                    perturbed_error.append({"img_name_a": img_name_a, "img_path_1": img_path_1, "img_name_b": img_name_b, "img_path_2": img_path_2, "Error": ""})
-                    continue
+                    # perturbed_error.append({"img_name_a": img_name_a, "img_path_1": img_path_1, "img_name_b": img_name_b, "img_path_2": img_path_2, "Error": ""})
 
-                # verification = DeepFace.verify(img1_path = img_path_1, img2_path = img_path_2, model_name=MODEL, enforce_detection=False)
-                verification = DeepFace.verify(img1_path = img_path_1, 
-                                                img2_path = img_path_2, 
-                                                model_name=model_used, 
-                                                enforce_detection=False,
-                                                distance_metric= METRIC, 
-                                                detector_backend = BACKEND)
-                                                
-                verification_res = verification["verified"]
-                iteration += 1
-                
-                # Truth Positive if flag and predicted are True:
-                if match_case and verification_res:
-                    tp += 1
-                # Truth Negative if flag and predicted are False:
-                elif match_case == False and verification_res == False:
-                    tn += 1
+                else:
+                    # verification = DeepFace.verify(img1_path = img_path_1, img2_path = img_path_2, model_name=MODEL, enforce_detection=False)
+                    verification = DeepFace.verify(img1_path = img_path_1, 
+                                                    img2_path = img_path_2, 
+                                                    model_name=model_used, 
+                                                    enforce_detection=False,
+                                                    distance_metric= METRIC, 
+                                                    detector_backend = BACKEND)
+                                                    
+                    verification_res = verification["verified"]
+                    iteration += 1
+                    
+                    # Truth Positive if flag and predicted are True:
+                    if match_case and verification_res:
+                        tp += 1
+                    # Truth Negative if flag and predicted are False:
+                    elif match_case == False and verification_res == False:
+                        tn += 1
 
-                # False Positive if flag is False and predicted is True:
-                elif match_case == False and verification_res == True:
-                    fp += 1
+                    # False Positive if flag is False and predicted is True:
+                    elif match_case == False and verification_res == True:
+                        fp += 1
 
-                # False Negative if flag is True and predicted is False:
-                elif match_case == True and verification_res == False:
-                    fn += 1    
+                    # False Negative if flag is True and predicted is False:
+                    elif match_case == True and verification_res == False:
+                        fn += 1    
 
         except Exception as e:
             print(e)
             undetected += 1
-            perturbed_error.append({"img_name_a": img_name_a, "img_path_1": img_path_1, "img_name_b": img_name_b, "img_path_2": img_path_2, "Error": e})
+            # perturbed_error.append({"img_name_a": img_name_a, "img_path_1": img_path_1, "img_name_b": img_name_b, "img_path_2": img_path_2, "Error": e})
     
     # calculate confusion matrix:
     cm_acc = round((tp + tn) / (tp + tn + fp + fn), 2) * 100
@@ -132,9 +139,8 @@ def deepface_benchmark_lfw_split(dataset, dataset_path, benchmark_df, model_used
     cm_rec = round( (tp) / (tp + fn), 2) * 100
 
     return {"Model": model_used, "Dataset":dataset, "CM_ACC": cm_acc, "Precision":cm_pre, "Recall":cm_rec,\
-            "Total Images": iteration, "TP": tp, "TN":tn, "FP":fp, "FN":fn, "Undetected": undetected}, perturbed_error
+            "Total Images": iteration, "Gender": test_gender, "TP": tp, "TN":tn, "FP":fp, "FN":fn, "Undetected": undetected}
 
-    # return perturbed_error
          
 ######## BENCHMARK GENDER SPLIT TESTING ########
 
