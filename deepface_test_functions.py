@@ -159,31 +159,27 @@ def deepface_benchmark(dataset, dataset_path, benchmark_df, model_used, METRIC, 
 
     tp, tn, fp, fn = 0, 0, 0, 0
     iteration, undetected = 0, 0
-    match_case = None
 
     for index, row in benchmark_df.iterrows():
 
-        flag = str(row[3])
+        match_case = row[0]
 
-        if flag == "nan":
-            img_name = row["name"]
-            img_num_1 = f'{row["imagenum1"]:04d}'
-            img_num_2 = f'{int(row["imagenum2"]):04d}'
-
-            img_path_1 = f'{dataset_path}/{img_name}/{img_name}_{img_num_1}.jpg'
-            img_path_2 = f'{dataset_path}/{img_name}/{img_name}_{img_num_2}.jpg'
-            match_case = True
+        if match_case:
+            img_name_a = get_name(row[1])
+            img_num_1 = row[1]
+            img_num_2 = row[2]
+            img_path_1, gender_1 = find_image(dataset_path, img_name_a, img_num_1, test_gender=None)
+            img_path_2, gender_2 = find_image(dataset_path, img_name_a, img_num_2, test_gender=None)
             iteration += 1
         
         else:
-            img_name_a = row["name"]
-            img_num_1 = f'{row["imagenum1"]:04d}'
-            img_name_b = f'{row["imagenum2"]}'
-            img_num_2 = f'{int(row[3]):04d}'
+            img_name_a = get_name(row[1])
+            img_name_b = get_name(row[2])
+            img_num_1 = row[1]
+            img_num_2 = row[2]
 
-            img_path_1 = f'{dataset_path}/{img_name_a}/{img_name_a}_{img_num_1}.jpg'
-            img_path_2 = f'{dataset_path}/{img_name_b}/{img_name_b}_{img_num_2}.jpg'
-            match_case = False
+            img_path_1, gender_1 = find_image(dataset_path, img_name_a, img_num_1, test_gender=None)
+            img_path_2, gender_2 = find_image(dataset_path, img_name_b, img_num_2, test_gender=None)
             iteration += 1    
 
         try:
