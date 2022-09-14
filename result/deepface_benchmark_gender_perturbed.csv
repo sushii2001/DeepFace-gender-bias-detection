@@ -1,3 +1,25 @@
-Model,Dataset,CM_ACC,Precision,Recall,Total Images,TP,TN,FP,FN,Undetected
-Facenet512,LFW_gender_makeup_heavy,88.0,96.0,80.0,494,196,240,9,49,1006
-Facenet512,LFW_gender_makeup_heavy,86.0,99.0,75.0,747,318,322,3,104,753
+Model,Dataset,CM_ACC,Precision,Recall,Total Images,Gender,TP,TN,FP,FN,Undetected
+Facenet512,LFW_gender_makeup_heavy,87.0,94.0,80.0,1000,Male,398,476,24,102,0
+Facenet512,LFW_gender_makeup_heavy,86.0,99.0,73.0,1000,Female,366,498,2,134,0
+Facenet,LFW_gender_makeup_heavy,67.0,100.0,35.0,1000,Male,174,500,0,326,0
+Facenet,LFW_gender_makeup_heavy,69.0,100.0,38.0,1000,Female,192,500,0,308,0
+VGG-Face,LFW_gender_makeup_heavy,73.0,70.0,81.0,1000,Male,404,327,173,96,0
+VGG-Face,LFW_gender_makeup_heavy,83.0,96.0,69.0,1000,Female,346,487,13,154,0
+OpenFace,LFW_gender_makeup_heavy,54.0,95.0,8.0,1000,Male,38,498,2,462,0
+OpenFace,LFW_gender_makeup_heavy,56.00000000000001,100.0,12.0,1000,Female,60,500,0,440,0
+DeepFace,LFW_gender_makeup_heavy,55.00000000000001,62.0,25.0,1000,Male,127,422,78,373,0
+DeepFace,LFW_gender_makeup_heavy,57.99999999999999,79.0,22.0,1000,Female,110,471,29,390,0
+ArcFace,LFW_gender_makeup_heavy,87.0,98.0,75.0,1000,Male,377,494,6,123,0
+ArcFace,LFW_gender_makeup_heavy,86.0,99.0,73.0,1000,Female,365,498,2,135,0
+Facenet512,LFW_gender_makeup_light,88.0,93.0,81.0,896,Male,350,440,25,81,104
+Facenet512,LFW_gender_makeup_light,89.0,100.0,77.0,959,Female,363,487,0,109,41
+Facenet,LFW_gender_makeup_light,68.0,100.0,33.0,896,Male,144,465,0,287,104
+Facenet,LFW_gender_makeup_light,68.0,100.0,36.0,959,Female,169,487,0,303,41
+VGG-Face,LFW_gender_makeup_light,71.0,66.0,81.0,896,Male,348,284,181,83,104
+VGG-Face,LFW_gender_makeup_light,84.0,95.0,72.0,959,Female,339,470,17,133,41
+OpenFace,LFW_gender_makeup_light,54.0,100.0,5.0,896,Male,21,465,0,410,104
+OpenFace,LFW_gender_makeup_light,59.0,100.0,18.0,959,Female,83,487,0,389,41
+DeepFace,LFW_gender_makeup_light,51.0,49.0,27.0,896,Male,115,344,121,316,104
+DeepFace,LFW_gender_makeup_light,56.99999999999999,65.0,26.0,959,Female,121,421,66,351,41
+ArcFace,LFW_gender_makeup_light,86.0,97.0,74.0,896,Male,318,454,11,113,104
+ArcFace,LFW_gender_makeup_light,88.0,99.0,76.0,959,Female,359,485,2,113,41
