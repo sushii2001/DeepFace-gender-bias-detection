@@ -60,7 +60,7 @@ def deepface_benchmark_lfw_split(dataset, dataset_path, benchmark_df, model_used
     """
 
     tp, tn, fp, fn = 0, 0, 0, 0
-    iteration, undetected = 0, 0
+    iteration, undetected, perturbed_error = 0, 0, []
 
     for index, row in benchmark_df.iterrows():
 
@@ -97,7 +97,7 @@ def deepface_benchmark_lfw_split(dataset, dataset_path, benchmark_df, model_used
 
                 if not (img_path_1 and img_path_2):
                     undetected += 1
-                    # perturbed_error.append({"img_name_a": img_name_a, "img_path_1": img_path_1, "img_name_b": img_name_b, "img_path_2": img_path_2, "Error": ""})
+                    perturbed_error.append({"img1": img_num_1, "img_path_1": img_path_1, "img2": img_num_2, "img_path_2": img_path_2, "Error": e})
 
                 else:
                     # verification = DeepFace.verify(img1_path = img_path_1, img2_path = img_path_2, model_name=MODEL, enforce_detection=False)
@@ -129,7 +129,7 @@ def deepface_benchmark_lfw_split(dataset, dataset_path, benchmark_df, model_used
         except Exception as e:
             print(e)
             undetected += 1
-            # perturbed_error.append({"img_name_a": img_name_a, "img_path_1": img_path_1, "img_name_b": img_name_b, "img_path_2": img_path_2, "Error": e})
+            perturbed_error.append({"img1": img_num_1, "img_path_1": img_path_1, "img2": img_num_2, "img_path_2": img_path_2, "Error": e})
     
     # calculate confusion matrix:
     cm_acc = round((tp + tn) / (tp + tn + fp + fn), 2) * 100
@@ -139,7 +139,7 @@ def deepface_benchmark_lfw_split(dataset, dataset_path, benchmark_df, model_used
     cm_rec = round( (tp) / (tp + fn), 2) * 100
 
     return {"Model": model_used, "Dataset":dataset, "CM_ACC": cm_acc, "Precision":cm_pre, "Recall":cm_rec,\
-            "Total Images": iteration, "Gender": test_gender, "TP": tp, "TN":tn, "FP":fp, "FN":fn, "Undetected": undetected}
+            "Total Images": iteration, "Gender": test_gender, "TP": tp, "TN":tn, "FP":fp, "FN":fn, "Undetected": undetected}, perturbed_error
 
          
 ######## BENCHMARK GENDER SPLIT TESTING ########

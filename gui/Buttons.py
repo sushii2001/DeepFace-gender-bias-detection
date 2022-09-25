@@ -9,8 +9,8 @@ class Buttons:
         self.value = value
         self.results_fr = pd.read_csv('./result/deepface_gui_face_recognition.csv')
         self.results_gender = pd.read_csv('./result/deepface_gui_gender.csv')
-        # self.results_lfw = pd.read_csv('./result/deepface_benchmark_mod.csv')
-        self.results_lfw = pd.read_csv('./result/deepface_benchmark_gender.csv')
+        self.results_lfw = pd.read_csv('./result/deepface_benchmark_gender_nonperturbed.csv')
+        self.results_lfw_makeup = pd.read_csv('./result/deepface_benchmark_gender_perturbed.csv')
 
     def test_btn_sample(self, accuracy, updated_accuracy, gender, gender_value, dataset_current):
         if dataset_current == "LFW (Male)":
@@ -27,25 +27,38 @@ class Buttons:
             gender = self.results_gender.iloc[1,1]
             gender_value["text"] = gender
 
-        # elif dataset_current == "LFW (Male + Makeup)":
-        #     updated_accuracy = self.results.iloc[1,1]
-        #     accuracy["text"] = str(updated_accuracy) + "%"
+        elif dataset_current == "LFW (Male + Light Makeup)":
+            updated_accuracy = self.results_fr.iloc[2,1]
+            accuracy["text"] = str(updated_accuracy) + "%"
 
-        #     GENDER_VAL = ["MALE", "FEMALE"]
-        #     gender = rd.choices(GENDER_VAL)
-        #     gender_value["text"] = str(gender.pop())
+            gender = self.results_gender.iloc[2,1]
+            gender_value["text"] = gender
 
-        # elif dataset_current == "LFW (Female + Makeup)":
-        #     updated_accuracy = self.results.iloc[1,1]
-        #     accuracy["text"] = str(updated_accuracy) + "%"
+        elif dataset_current == "LFW (Female + Light Makeup)":
+            updated_accuracy = self.results_fr.iloc[3,1]
+            accuracy["text"] = str(updated_accuracy) + "%"
 
-        #     GENDER_VAL = ["MALE", "FEMALE"]
-        #     gender = rd.choices(GENDER_VAL)
-        #     gender_value["text"] = str(gender.pop())
+            gender = self.results_gender.iloc[3,1]
+            gender_value["text"] = gender
+
+        elif dataset_current == "LFW (Male + Heavy Makeup)":
+            updated_accuracy = self.results_fr.iloc[4,1]
+            accuracy["text"] = str(updated_accuracy) + "%"
+
+            gender = self.results_gender.iloc[4,1]
+            gender_value["text"] = gender
+
+        elif dataset_current == "LFW (Female + Heavy Makeup)":
+            updated_accuracy = self.results_fr.iloc[5,1]
+            accuracy["text"] = str(updated_accuracy) + "%"
+
+            gender = self.results_gender.iloc[5,1]
+            gender_value["text"] = gender
         else: 
             print(dataset_current)
 
     def test_btn_full(self, accuracy, updated_accuracy, gender, gender_value, dataset_current, model_current):
+        # Non-perturbed Results:
         if model_current == "Facenet512" and dataset_current == "LFW (Male)":
             updated_accuracy = self.results_lfw.iloc[0,2]
             accuracy["text"] = str(updated_accuracy)[:5] + "%"
@@ -92,6 +105,104 @@ class Buttons:
 
         elif model_current == "ArcFace" and dataset_current == "LFW (Female)":
             updated_accuracy = self.results_lfw.iloc[11,2]
+            accuracy["text"] = str(updated_accuracy)[:5] + "%"
+
+        # Light Makeup Results: 
+        elif model_current == "Facenet512" and dataset_current == "LFW (Male + Light Makeup)":
+            updated_accuracy = self.results_lfw_makeup.iloc[12,2]
+            accuracy["text"] = str(updated_accuracy)[:5] + "%"
+
+        elif model_current == "Facenet" and dataset_current == "LFW (Male + Light Makeup)":
+            updated_accuracy = self.results_lfw_makeup.iloc[14,2]
+            accuracy["text"] = str(updated_accuracy)[:5] + "%"
+
+        elif model_current == "VGG-Face" and dataset_current == "LFW (Male + Light Makeup)":
+            updated_accuracy = self.results_lfw_makeup.iloc[16,2]
+            accuracy["text"] = str(updated_accuracy)[:5] + "%"
+
+        elif model_current == "OpenFace" and dataset_current == "LFW (Male + Light Makeup)":
+            updated_accuracy = self.results_lfw_makeup.iloc[18,2]
+            accuracy["text"] = str(updated_accuracy)[:5] + "%"
+
+        elif model_current == "DeepFace" and dataset_current == "LFW (Male + Light Makeup)":
+            updated_accuracy = self.results_lfw_makeup.iloc[20,2]
+            accuracy["text"] = str(updated_accuracy)[:5] + "%"
+
+        elif model_current == "ArcFace" and dataset_current == "LFW (Male + Light Makeup)":
+            updated_accuracy = self.results_lfw_makeup.iloc[22,2]
+            accuracy["text"] = str(updated_accuracy)[:5] + "%"
+
+        elif model_current == "Facenet512" and dataset_current == "LFW (Female + Light Makeup)":
+            updated_accuracy = self.results_lfw_makeup.iloc[13,2]
+            accuracy["text"] = str(updated_accuracy)[:5] + "%"
+
+        elif model_current == "Facenet" and dataset_current == "LFW (Female + Light Makeup)":
+            updated_accuracy = self.results_lfw_makeup.iloc[15,2]
+            accuracy["text"] = str(updated_accuracy) + "%"
+
+        elif model_current == "VGG-Face" and dataset_current == "LFW (Female + Light Makeup)":
+            updated_accuracy = self.results_lfw_makeup.iloc[17,2]
+            accuracy["text"] = str(updated_accuracy)[:5] + "%"
+
+        elif model_current == "OpenFace" and dataset_current == "LFW (Female + Light Makeup)":
+            updated_accuracy = self.results_lfw_makeup.iloc[19,2]
+            accuracy["text"] = str(updated_accuracy)[:5] + "%"
+
+        elif model_current == "DeepFace" and dataset_current == "LFW (Female + Light Makeup)":
+            updated_accuracy = self.results_lfw_makeup.iloc[21,2]
+            accuracy["text"] = str(updated_accuracy)[:5] + "%"
+
+        elif model_current == "ArcFace" and dataset_current == "LFW (Female + Light Makeup)":
+            updated_accuracy = self.results_lfw_makeup.iloc[23,2]
+            accuracy["text"] = str(updated_accuracy)[:5] + "%"
+
+        # Heavy Makeup Results: 
+        elif model_current == "Facenet512" and dataset_current == "LFW (Male + Heavy Makeup)":
+            updated_accuracy = self.results_lfw_makeup.iloc[0,2]
+            accuracy["text"] = str(updated_accuracy)[:5] + "%"
+
+        elif model_current == "Facenet" and dataset_current == "LFW (Male + Heavy Makeup)":
+            updated_accuracy = self.results_lfw_makeup.iloc[2,2]
+            accuracy["text"] = str(updated_accuracy)[:5] + "%"
+
+        elif model_current == "VGG-Face" and dataset_current == "LFW (Male + Heavy Makeup)":
+            updated_accuracy = self.results_lfw_makeup.iloc[4,2]
+            accuracy["text"] = str(updated_accuracy)[:5] + "%"
+
+        elif model_current == "OpenFace" and dataset_current == "LFW (Male + Heavy Makeup)":
+            updated_accuracy = self.results_lfw_makeup.iloc[6,2]
+            accuracy["text"] = str(updated_accuracy)[:5] + "%"
+
+        elif model_current == "DeepFace" and dataset_current == "LFW (Male + Heavy Makeup)":
+            updated_accuracy = self.results_lfw_makeup.iloc[8,2]
+            accuracy["text"] = str(updated_accuracy)[:5] + "%"
+
+        elif model_current == "ArcFace" and dataset_current == "LFW (Male + Heavy Makeup)":
+            updated_accuracy = self.results_lfw_makeup.iloc[10,2]
+            accuracy["text"] = str(updated_accuracy)[:5] + "%"
+
+        elif model_current == "Facenet512" and dataset_current == "LFW (Female + Heavy Makeup)":
+            updated_accuracy = self.results_lfw_makeup.iloc[1,2]
+            accuracy["text"] = str(updated_accuracy)[:5] + "%"
+
+        elif model_current == "Facenet" and dataset_current == "LFW (Female + Heavy Makeup)":
+            updated_accuracy = self.results_lfw_makeup.iloc[3,2]
+            accuracy["text"] = str(updated_accuracy) + "%"
+
+        elif model_current == "VGG-Face" and dataset_current == "LFW (Female + Heavy Makeup)":
+            updated_accuracy = self.results_lfw_makeup.iloc[5,2]
+            accuracy["text"] = str(updated_accuracy)[:5] + "%"
+
+        elif model_current == "OpenFace" and dataset_current == "LFW (Female + Heavy Makeup)":
+            updated_accuracy = self.results_lfw_makeup.iloc[7,2]
+            accuracy["text"] = str(updated_accuracy)[:5] + "%"
+
+        elif model_current == "DeepFace" and dataset_current == "LFW (Female + Heavy Makeup)":
+            updated_accuracy = self.results_lfw_makeup.iloc[9,2]
+            accuracy["text"] = str(updated_accuracy)[:5] + "%"
+
+        elif model_current == "ArcFace" and dataset_current == "LFW (Female + Heavy Makeup)":
+            updated_accuracy = self.results_lfw_makeup.iloc[11,2]
             accuracy["text"] = str(updated_accuracy)[:5] + "%"
 
         else: 

@@ -19,19 +19,19 @@ class Test_acc_gender:
         ###### Current Accuracy ######
         accuracy_label = myLabel(self.window, "Accuracy: ", "Helvetica", "#ffffff", "#000000")
         accuracy_value = myLabel(self.window, TEST_VALUE, "Helvetica", "#12ed96", "#000000")
-        accuracy_label.create(x=430, y=100)
-        accuracy_value = accuracy_value.create(x=525, y=100)
+        accuracy_label.create(x=520, y=180)
+        accuracy_value = accuracy_value.create(x=620, y=183)
 
         GENDER = None
         ###### Current Gender ######
         genderLabel = myLabel(self.window, "Gender: ", "Helvetica", "#ffffff", "#000000")
         gender_value = myLabel(self.window, GENDER, "Helvetica", "#ffffff", "#000000")
-        genderLabel.create(x=610, y=100)
-        gender_value = gender_value.create(x=690, y=100)
+        genderLabel.create(x=520, y=140)
+        gender_value = gender_value.create(x=600, y=140)
 
         # Label for test result
         test_result = myLabel(self.window, "Test Result", "Helvetica", "#ffffff", "#000000")
-        test_result.create(x=500, y=50)
+        test_result.create(x=590, y=85)
 
         ###### Test Sample button ######
         btn_sample = Buttons(self.window, value=TEST_VALUE)
@@ -58,31 +58,31 @@ class Test_acc_gender:
         # COMPARISON
         ###### Previous Dataset #######
         prev_dataset_label = myLabel(self.window, "Prev-Dataset: ", "Helvetica", "#ffffff", "#000000")
-        prev_dataset_label.create(x=430, y=340)
+        prev_dataset_label.create(x=520, y=340)
         PREV_DS = ""
         prev_dataset = myLabel(self.window, PREV_DS, "Helvetica", "#ffffff", "#000000")
-        prev_dataset = prev_dataset.create(x=560, y=340)
+        prev_dataset = prev_dataset.create(x=650, y=340)
 
         ###### Previous Dataset #######
         prev_model_label = myLabel(self.window, "Prev-Model: ", "Helvetica", "#ffffff", "#000000")
-        prev_model_label.create(x=430, y=380)
+        prev_model_label.create(x=520, y=380)
         PREV_MOD = ""
         prev_model = myLabel(self.window, PREV_MOD, "Helvetica", "#ffffff", "#000000")
-        prev_model = prev_model.create(x=550, y=380)
+        prev_model = prev_model.create(x=640, y=380)
 
         PREV_ACCURACY_VAL = ""
         ####### Previous Accuracy #######
         prev_accuracy_label = myLabel(self.window, "Prev-Accuracy: ", "Helvetica", "#ffffff", "#000000")
         prev_accuracy_value = myLabel(self.window, PREV_ACCURACY_VAL, "Helvetica", "#ffffff", "#000000")
-        prev_accuracy_label.create(x=430, y=420)
-        prev_accuracy_value = prev_accuracy_value.create(x=570, y=420)
+        prev_accuracy_label.create(x=520, y=420)
+        prev_accuracy_value = prev_accuracy_value.create(x=670, y=420)
 
         ACCURACY_DIFF = "0.0%"
         ####### Accuracy Diff #######
         accuracy_diff_label = myLabel(self.window, "Accuracy Difference: ", "Helvetica", "#ffffff", "#000000")
         accuracy_diff_value = myLabel(self.window, ACCURACY_DIFF, "Helvetica", "#12ed96", "#000000")
-        accuracy_diff_label.create(x=430, y=460)
-        accuracy_diff_value = accuracy_diff_value.create(x=620, y=460)
+        accuracy_diff_label.create(x=520, y=460)
+        accuracy_diff_value = accuracy_diff_value.create(x=710, y=460)
 
         
         ###### Save button ######
@@ -96,7 +96,7 @@ class Test_acc_gender:
                 prev_accuracy_value, prev_dataset, prev_model, accuracy_value, self.dataset_val.CURRENT_DATASET, self.model_menu.CURRENT_MODEL
             ),
         )
-        saveButton.place(x=630, y=53)
+        saveButton.place(x=526, y=235)
 
         ###### Compare button ######
         btn_compare = Buttons(self.window, value=TEST_VALUE)
@@ -107,7 +107,7 @@ class Test_acc_gender:
             fg="black",
             command=lambda: btn_compare.compare_btn(accuracy_value, prev_accuracy_value, accuracy_diff_value),
         )
-        compareButton.place(x=680, y=53)
+        compareButton.place(x=572, y=235)
 
         ####### Button config #######
         sampleButton.config(height=1, width=12)

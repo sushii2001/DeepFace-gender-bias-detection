@@ -1,4 +1,7 @@
 Model,Accuracy,Gender
 Facenet512,100.0,Male
 Facenet512,95.0,Female
-
+Facenet512,98.0,Male
+Facenet512,100.0,Female
+Facenet512,94.0,Male
+Facenet512,100.0,Female
