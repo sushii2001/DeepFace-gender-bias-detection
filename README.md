@@ -39,7 +39,7 @@ In this project, we use [`Jupyter notebook`](https://jupyter.org/install) as our
 We recommend using [`Viusal Studio Code`](https://code.visualstudio.com/download) to run our program, however feel free to use your preferred code editor if you are much familiar with it. 
 
 ## Other requirements
-The following code installs the other packages' dependency used in this project
+Please proceed to clone the project repository, and run the following code to install the other packages' dependency used in this project
 ```shell
 $ pip install -r requirements.txt
 ```
