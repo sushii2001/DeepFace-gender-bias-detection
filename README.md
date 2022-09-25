@@ -3,7 +3,7 @@ An extended investigation on gender bias in DeepFace face recognition model, dev
 
 <p align="center"><img src="./images/deepface-icon-labeled.png" width="200" height="240"></p>
 
-In this experiment, we focus on applying perturbation on the LFW (Labeled Faces in the Wild) benchmark dataset and compare the performance differences between Males and Females. 
+In this experiment, we focus on applying perturbation on the [`LFW`](http://vis-www.cs.umass.edu/lfw/) (Labeled Faces in the Wild) benchmark dataset and compare the performance differences between Males and Females. 
 
 # Software Setup
 ## Package manager (Optional)
@@ -44,6 +44,9 @@ The following code installs the other packages' dependency used in this project
 $ pip install -r requirements.txt
 ```
 
+## Data installation
+Since GitHub limits the size of files to as large as 50MB, we are unable to include the necessary datasets used in this repository. However, you may refer to this [`GoogleDrive`](https://drive.google.com/drive/folders/1rGlsjHWoje3PFhLIrgCu0pH5NIhvOLdb?usp=sharing) to download it. 
+
 # Code Components
 ## `DeepFace-test.ipynb`
 This is the notebook responsible for testing the existance of gender bias in Deepface. All test results are saved to the respective CSV files.
@@ -71,3 +74,25 @@ The main script file to launch the project's GUI for users to interact various d
 3. Save and Compare Previous buttons
     - Saves results under the current output 
     - Compares the previously saved accuracy below with current accuracy and outputs the differences
+
+## Licence
+
+Deepface is licensed under the MIT License - see [`LICENSE`](https://github.com/serengil/deepface/blob/master/LICENSE) for more details. However, the library wraps some external face recognition models: [VGG-Face](http://www.robots.ox.ac.uk/~vgg/software/vgg_face/), [Facenet](https://github.com/davidsandberg/facenet/blob/master/LICENSE.md), [OpenFace](https://github.com/iwantooxxoox/Keras-OpenFace/blob/master/LICENSE), [DeepFace](https://github.com/swghosh/DeepFace), [DeepID](https://github.com/Ruoyiran/DeepID/blob/master/LICENSE.md), [ArcFace](https://github.com/leondgarse/Keras_insightface/blob/master/LICENSE), [Dlib](https://github.com/davisking/dlib/blob/master/dlib/LICENSE.txt), and [SFace](https://github.com/opencv/opencv_zoo/blob/master/models/face_recognition_sface/LICENSE). Besides, age, gender and race / ethnicity models are based on VGG-Face. Licence types will be inherited if you are going to use those models. Please check the license types of those models for production purposes.
+
+Deepface [logo](https://thenounproject.com/term/face-recognition/2965879/) is created by [Adrien Coquet](https://thenounproject.com/coquet_adrien/) and it is licensed under [Creative Commons: By Attribution 3.0 License](https://creativecommons.org/licenses/by/3.0/).
+
+# References:
+Serengil, Sefik Ilkin, and Alper Ozpinar. 2021. “HyperExtended
+LightFace: A Facial Attribute Analysis Framework.” In *2021
+International Conference on Engineering and Emerging Technologies
+(ICEET)*, 1–4. IEEE. <https://doi.org/10.1109/ICEET53442.2021.9659697>.
+
+Serengil, Sefik Ilkin, and Alper Ozpinar. 2020. “LightFace: A Hybrid
+Deep Face Recognition Framework.” In *2020 Innovations in Intelligent
+Systems and Applications Conference (ASYU)*, 23–27. IEEE.
+<https://doi.org/10.1109/ASYU50717.2020.9259802>.
+
+Huang, Gary B., Manu Ramesh, Tamara Berg, and Erik Learned-Miller. 2007.
+“Labeled Faces in the Wild: A Database for Studying Face Recognition in
+Unconstrained Environments.” 07-49. University of Massachusetts,
+Amherst.
