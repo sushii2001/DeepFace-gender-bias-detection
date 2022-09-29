@@ -3,5 +3,6 @@ Data directory,Gender
 ./data/LFW/Angelina_Jolie/Angelina_Jolie_0002.jpg,Woman
 ./data/LFW_gender_makeup_light/Male/Junichiro_Koizumi/Junichiro_Koizumi_0026.jpg,Man
 ./data/LFW_gender_makeup_light/Female/Mariangel_Ruiz_Torrealba/Mariangel_Ruiz_Torrealba_0003.jpg,Woman
-./data/LFW_gender_makeup_light/Male/Vicente_Fox/Vicente_Fox_0029.jpg,Man
-./data/LFW_gender_makeup_light/Female/Venus_Williams/Venus_Williams_0016.jpg,Man
+./data/LFW_gender_makeup_heavy/Male/Vicente_Fox/Vicente_Fox_0032.jpg,Man
+./data/LFW_gender_makeup_heavy/Female/Venus_Williams/Venus_Williams_0001.jpg,Man
+
