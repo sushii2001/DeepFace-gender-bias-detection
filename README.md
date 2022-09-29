@@ -96,3 +96,7 @@ Huang, Gary B., Manu Ramesh, Tamara Berg, and Erik Learned-Miller. 2007.
 “Labeled Faces in the Wild: A Database for Studying Face Recognition in
 Unconstrained Environments.” 07-49. University of Massachusetts,
 Amherst.
+
+Pu, M., Kuan, M. Y., Lim, N. T., Chong, C. Y., & Lim, M. K. (2022). Fairness evaluation in
+deepfake detection models using metamorphic testing. In 2022 ieee/acm 7th international
+workshop on metamorphic testing (met) (pp. 7–14). doi:10.1145/3524846.3527337
