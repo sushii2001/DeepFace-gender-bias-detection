@@ -40,7 +40,7 @@ class Test_acc_gender:
             text="Test (SAMPLE)",
             bg="yellow",
             fg="black",
-            command=lambda: btn_sample.test_btn_sample(accuracy_value, TEST_VALUE, genderLabel, gender_value, self.dataset_val.CURRENT_DATASET),
+            command=lambda: btn_sample.test_btn_sample(accuracy_value, TEST_VALUE, genderLabel, gender_value, self.dataset_val.CURRENT_DATASET, self.model_menu.CURRENT_MODEL),
         )
         sampleButton.place(x=55, y=235)
 

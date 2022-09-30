@@ -22,13 +22,13 @@ import os
 
 ######## 1. BENCHMARK GENDER SPLIT TESTING ########
 def get_name(image_file):
+    name = None
     try:
         match = re.search(f"_\d.*\.jpg", image_file)
         name = image_file.replace(match.group(0), "")
         
-    except AttributeError:
+    except Exception:
         print("IMAGE: " + image_file)
-        exit(1)
     return name
 
 def find_image(dataset_path, img_name, img_num, test_gender):
@@ -63,15 +63,8 @@ def deepface_benchmark_lfw_split(dataset, dataset_path, benchmark_df, model_used
     iteration, undetected, perturbed_error = 0, 0, []
 
     for index, row in benchmark_df.iterrows():
-
-        # Male: 2~1001, Female: 1002~2001
-        if test_gender == "Female" and index+1 <= 1000:
-            continue
-        elif test_gender == "Male" and index+1 == 1001:
-            break
-
         match_case = row[0]
-
+        
         try:
             # case identification (match or non-match)
             if match_case:
