@@ -8,7 +8,7 @@ from Instructions import Instructions
 from Model_menu import Model_menu
 
 
-if __name__ == "__main__":
+def start_application():
      # Create and configure window:
      window = tk.Tk()
      window.configure(background="#ffffff")  # background
@@ -27,38 +27,15 @@ if __name__ == "__main__":
      test_model = Test_acc_gender(window, dataset_menu, model_menu)
      test_model.main()
 
-     # create bar plot
-     # import matplotlib, numpy, sys
-     # matplotlib.use('TkAgg')
-     # from matplotlib.backends.backend_tkagg import FigureCanvasTkAgg
-     # from matplotlib.figure import Figure
-     # if sys.version_info[0] < 3:
-     #      import Tkinter as Tk
-     # else:
-     #      import tkinter as Tk
-
-     # root = Tk.Tk()
-
-     # f = Figure(figsize=(5,4), dpi=100)
-     # ax = f.add_subplot(111)
-
-     # data = (20, 35, 30, 35, 27)
-
-     # ind = numpy.arange(5)  # the x locations for the groups
-     # width = .5
-
-     # rects1 = ax.bar(ind, data, width)
-
-     # canvas = FigureCanvasTkAgg(f, master=root)
-     # canvas.draw()
-     # canvas.get_tk_widget().pack(side=Tk.TOP, fill=Tk.BOTH, expand=1)
-
-     # Tk.mainloop()
-
      # create instructions for buttons
      instructions = Instructions(window)
      instructions.main()
 
      # Start the window, Create text entry box for : status field
      statusField = tk.Entry(window)
-     window.mainloop()
+     # window.mainloop()
+     return window
+
+
+if __name__ == "__main__":
+     start_application().mainloop()

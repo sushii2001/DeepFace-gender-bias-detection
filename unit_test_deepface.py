@@ -1,20 +1,7 @@
-from inspect import Attribute
-from lib2to3.pgen2.token import OP
 import unittest
-
 from random import randint
-from typing import Tuple, Optional
+
 from deepface_test_functions import *
-
-unittest.TestLoader.sortTestMethodsUsing = lambda _, x, y: randint(-1, 1)  # type: ignore
-
-
-def setUpModule():
-    pass
-
-
-def tearDownModule():
-    pass
 
 
 class TestName(unittest.TestCase):
@@ -119,36 +106,47 @@ class TestName(unittest.TestCase):
         """
 
         # Test instances
-        unit_test_df = pd.read_csv('./data/LFW-csv/unit_test_deepface.csv')
+        unit_test_df_pos = pd.read_csv('./data/LFW-csv/unit_test_deepface.csv')
+        unit_test_df_neg = pd.read_csv('./data/LFW-csv/unit_test_deepface_neg.csv')
         models = ["Facenet512", "Facenet", "VGG-Face", "OpenFace", "DeepFace", "DeepID", "ArcFace", "Dlib", "SFace"]
         metrics = "euclidean_l2"
         backends = 'opencv'
 
         ####### Positive test case: #######
-        positive_file_names = [["LFW_gender", "./data/LFW_gender", unit_test_df, models[0], metrics, backends, "Male"],
-                                ["LFW_gender", "./data/LFW_gender", unit_test_df, models[0], metrics, backends, "Female"]
+        positive_file_names = [["LFW_gender", "./data/LFW_gender", unit_test_df_pos, models[0], metrics, backends, "Male"],
+                                ["LFW_gender", "./data/LFW_gender", unit_test_df_pos, models[0], metrics, backends, "Female"]
                                 ] 
 
-        positive_output = [({'Model': 'Facenet512','Dataset': 'LFW_gender',
-                            'CM_ACC': 100.0,
-                            'Precision': 100.0,
+        positive_output = [({'Model': 'Facenet512',
+                            'Dataset': 'LFW_gender',
+                            'CM_ACC': 90.0,
+                            'Precision': 83.0,
                             'Recall': 100.0,
-                            'Total Images': 4,
+                            'Total Images': 10,
                             'Gender': 'Male',
-                            'TP': 2,'TN': 2,'FP': 0,'FN': 0,'Undetected': 0}, []),
+                            'TP': 5,
+                            'TN': 4,
+                            'FP': 1,
+                            'FN': 0,
+                            'Undetected': 0}, []),
 
-                            ({'Model': 'Facenet512','Dataset': 'LFW_gender',
-                            'CM_ACC': 100.0,
+                            ({'Model': 'Facenet512',
+                            'Dataset': 'LFW_gender',
+                            'CM_ACC': 90.0,
                             'Precision': 100.0,
-                            'Recall': 100.0,
-                            'Total Images': 4,
+                            'Recall': 80.0,
+                            'Total Images': 10,
                             'Gender': 'Female',
-                            'TP': 2,'TN': 2,'FP': 0,'FN': 0,'Undetected': 0},[])
+                            'TP': 4,
+                            'TN': 5,
+                            'FP': 0,
+                            'FN': 1,
+                            'Undetected': 0},[])
                         ] 
 
         ####### Negative test case: #######
-        negative_file_names = [["LFW_gender", "./data/LFW_gender", unit_test_df, "Fake Model", metrics, backends, "Male"],
-                                ["LFW_gender", "./data/LFW_gender", unit_test_df, models[0], "fake metric", backends, "Female"]
+        negative_file_names = [["LFW_gender", "./data/LFW_gender", unit_test_df_neg, "Fake Model", metrics, backends, "Male"],
+                                ["LFW_gender", "./data/LFW_gender", unit_test_df_neg, models[0], "fake metric", backends, "Female"]
                                 ] 
 
         negative_output = [None, None]
@@ -174,5 +172,19 @@ class TestName(unittest.TestCase):
 if __name__.__contains__("__main__"):
     unittest.main()
     
-    # to run this test, type in terminal:
-    # python .\unit_testing.py -b
+    # To run this test, type in terminal:
+    # python .\unit_test_deepface.py -b
+
+    # To run pytest, type in terminal:
+    # pytest .\unit_test_deepface.py -v
+
+    # To run coverage, type in terminal:
+    # coverage run .\unit_test_deepface.py
+    # coverage report -m 
+
+    # To run pytest-cov, type in terminal:
+    # pytest --cov=deepface_test_functions unit_testing.py -v
+    # To generate HTML report: 
+    # pytest --cov=deepface_test_functions unit_test_deepface.py --cov-report=html -v
+    # To view the HTML report:
+    # open htmlcov/index.html, and run Go Live in VSCode
