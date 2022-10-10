@@ -5,4 +5,7 @@ Data directory,Gender
 ./data/LFW_gender_makeup_light/Female/Mariangel_Ruiz_Torrealba/Mariangel_Ruiz_Torrealba_0003.jpg,Woman
 ./data/LFW_gender_makeup_heavy/Male/Vicente_Fox/Vicente_Fox_0032.jpg,Man
 ./data/LFW_gender_makeup_heavy/Female/Venus_Williams/Venus_Williams_0001.jpg,Man
-
+./data/LFW_gender_moustache/Male/Michael_Chiklis/Michael_Chiklis_0001.jpg,Man
+./data/LFW_gender_moustache/Female/Tyra_Banks/Tyra_Banks_0001.jpg,Woman
+./data/LFW_gender_glasses/Male/Keith_Bogans/Keith_Bogans_0002.jpg,Man
+./data/LFW_gender_glasses/Female/Claire_Hentzen/Claire_Hentzen_0001.jpg,Man
