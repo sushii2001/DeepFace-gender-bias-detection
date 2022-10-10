@@ -7,11 +7,15 @@ class Dataset_menu:
     # DATASETS
     DATASETS_OPTIONS = [
         "LFW (Male)",
-        "LFW (Female)",
         "LFW (Male + Light Makeup)",
-        "LFW (Female + Light Makeup)",
         "LFW (Male + Heavy Makeup)",
+        "LFW (Male + Moustache)",
+        "LFW (Male + Glasses)",
+        "LFW (Female)",
+        "LFW (Female + Light Makeup)",
         "LFW (Female + Heavy Makeup)",
+        "LFW (Female + Moustache)",
+        "LFW (Female + Glasses)"
     ]
     
     CURRENT_DATASET = DATASETS_OPTIONS[0]
@@ -92,5 +96,34 @@ class Dataset_menu:
             )
             label.configure(image=img)
             label.img = img
+
+        elif Dataset_menu.CURRENT_DATASET == "LFW (Male + Moustache)":
+            img = ImageTk.PhotoImage(
+                Image.open("./data/LFW_gender_moustache/Male/Pierce_Brosnan/Pierce_Brosnan_0002.jpg").resize((100, 100))
+            )
+            label.configure(image=img)
+            label.img = img
+
+        elif Dataset_menu.CURRENT_DATASET == "LFW (Female + Moustache)":
+            img = ImageTk.PhotoImage(
+                Image.open("./data/LFW_gender_moustache/Female/Tyra_Banks/Tyra_Banks_0001.jpg").resize((100, 100))
+            )
+            label.configure(image=img)
+            label.img = img
+
+        elif Dataset_menu.CURRENT_DATASET == "LFW (Male + Glasses)":
+            img = ImageTk.PhotoImage(
+                Image.open("./data/LFW_gender_glasses/Male/Keith_Bogans/Keith_Bogans_0002.jpg").resize((100, 100))
+            )
+            label.configure(image=img)
+            label.img = img
+
+        elif Dataset_menu.CURRENT_DATASET == "LFW (Female + Glasses)":
+            img = ImageTk.PhotoImage(
+                Image.open("./data/LFW_gender_glasses/Female/Claire_Hentzen/Claire_Hentzen_0001.jpg").resize((100, 100))
+            )
+            label.configure(image=img)
+            label.img = img
+        
         else:
             pass
