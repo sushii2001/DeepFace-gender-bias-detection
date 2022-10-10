@@ -20,14 +20,14 @@ class Test_acc_gender:
         accuracy_label = myLabel(self.window, "Accuracy: ", "Helvetica", "#ffffff", "#000000")
         accuracy_value = myLabel(self.window, TEST_VALUE, ("Helvetica", 12), "#12ed96", "#000000")
         accuracy_label.create(x=520, y=180)
-        accuracy_value = accuracy_value.create(x=618.5, y=185.2)
+        accuracy_value = accuracy_value.create(x=600, y=181)
 
         GENDER = None
         ###### Current Gender ######
         genderLabel = myLabel(self.window, "Gender: ", "Helvetica", "#ffffff", "#000000")
         gender_value = myLabel(self.window, GENDER, ("Helvetica", 12), "#ffffff", "#000000")
         genderLabel.create(x=520, y=140)
-        gender_value = gender_value.create(x=600, y=144.8)
+        gender_value = gender_value.create(x=585, y=141)
 
         # Label for test result
         test_result = myLabel(self.window, "Test Result", "Helvetica", "#ffffff", "#000000")
@@ -65,28 +65,28 @@ class Test_acc_gender:
         prev_dataset_label.create(x=520, y=340)
         PREV_DS = ""
         prev_dataset = myLabel(self.window, PREV_DS, ("Helvetica", 10), "#ffffff", "#000000")
-        prev_dataset = prev_dataset.create(x=600, y=345)
+        prev_dataset = prev_dataset.create(x=585, y=341)
 
         ###### Previous Model #######
         prev_model_label = myLabel(self.window, "Model: ", "Helvetica", "#ffffff", "#000000")
         prev_model_label.create(x=520, y=380)
         PREV_MOD = ""
         prev_model = myLabel(self.window, PREV_MOD, ("Helvetica", 12), "#ffffff", "#000000")
-        prev_model = prev_model.create(x=590, y=383)
+        prev_model = prev_model.create(x=575, y=380)
 
         PREV_ACCURACY_VAL = ""
         ####### Previous Accuracy #######
         prev_accuracy_label = myLabel(self.window, "Accuracy: ", "Helvetica", "#ffffff", "#000000")
         prev_accuracy_value = myLabel(self.window, PREV_ACCURACY_VAL, ("Helvetica", 12), "#ffffff", "#000000")
         prev_accuracy_label.create(x=520, y=420)
-        prev_accuracy_value = prev_accuracy_value.create(x=615, y=424)
+        prev_accuracy_value = prev_accuracy_value.create(x=597, y=421)
 
         ACCURACY_DIFF = "0.0%"
         ####### Accuracy Diff #######
         accuracy_diff_label = myLabel(self.window, "Accuracy Difference: ", "Helvetica", "#ffffff", "#000000")
         accuracy_diff_value = myLabel(self.window, ACCURACY_DIFF, ("Helvetica", 12), "#12ed96", "#000000")
         accuracy_diff_label.create(x=520, y=460)
-        accuracy_diff_value = accuracy_diff_value.create(x=710, y=464)
+        accuracy_diff_value = accuracy_diff_value.create(x=675, y=461)
 
         
         ###### Save button ######

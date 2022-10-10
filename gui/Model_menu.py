@@ -22,8 +22,7 @@ class Model_menu:
         self.model_value.set(Model_menu.MODELS_OPTIONS[0])  # initial menu text
         self.window = window
         self.dataset_value = dataset_value
-        # self.results_lfw = pd.read_csv('./result/deepface_benchmark_mod.csv')
-        self.results_lfw = pd.read_csv('./result/deepface_benchmark_gender.csv')
+        self.results_lfw = pd.read_csv('./result/deepface_benchmark_gender_nonperturbed.csv')
 
     def create(self, x, y):
         drop = OptionMenu(
@@ -41,21 +40,3 @@ class Model_menu:
     def menu_check_btn(self, model_value):
 
         Model_menu.CURRENT_MODEL = model_value.get()
-        # dataset_value = self.dataset_value.CURRENT_DATASET
-
-        # ###### Current Accuracy ######
-        # accuracy_label = myLabel(self.window, "Accuracy: ", "Helvetica", "#ffffff", "#000000")
-        # accuracy_value = myLabel(self.window, "0.0%", "Helvetica", "#12ed96", "#000000")
-        # accuracy_label.create(x=430, y=100)
-        # accuracy_value = accuracy_value.create(x=525, y=100)
-
-        # if Model_menu.CURRENT_MODEL == "Facenet512" and dataset_value == "LFW (Male)":
-        #     accuracy = self.results_lfw.iloc[0,2]
-        #     accuracy_value["text"] = str(accuracy) + "%"
-
-        # elif Model_menu.CURRENT_MODEL == "Facenet" and dataset_value == "LFW (Male)":
-        #     accuracy = self.results_lfw.iloc[2,2]
-        #     accuracy_value["text"] = str(accuracy) + "%"
-        
-        # else:
-        #     print("GG")
