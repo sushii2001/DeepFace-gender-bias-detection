@@ -1,3 +1,4 @@
+# Import relevant libraries
 import unittest
 from random import randint
 
@@ -6,7 +7,9 @@ from deepface_test_functions import *
 
 class TestName(unittest.TestCase):
 
-    """Unittest."""
+    """
+    Unittest for functions in deepface_test_functions.py
+    """
     
     ####### Test methods #########
     def test_get_name(self):
