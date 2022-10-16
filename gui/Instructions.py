@@ -1,9 +1,13 @@
+# Import relevant libraries
 import tkinter as tk
 
 from MyLabel import myLabel
 from Buttons import Buttons
 
 class Instructions:
+    """
+    Legend labels for the sample and full test buttons
+    """
 
     def __init__(self, window) -> None:
         self.window = window

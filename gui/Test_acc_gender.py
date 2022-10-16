@@ -1,9 +1,13 @@
+# Import relevant libraries
 import tkinter as tk
 
 from MyLabel import myLabel
 from Buttons import Buttons
 
 class Test_acc_gender:
+    """
+    Variable values on GUI class
+    """
 
     # DATASET_VAL = None
 
