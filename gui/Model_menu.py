@@ -1,3 +1,4 @@
+# Import relevant libraries
 from tkinter import *
 import tkinter as tk
 from PIL import ImageTk, Image
@@ -15,6 +16,7 @@ class Model_menu:
         "ArcFace"
     ]
     
+    # Set current model on GUI to the first model in the list
     CURRENT_MODEL = MODELS_OPTIONS[0]
 
     def __init__(self, window, dataset_value):
@@ -25,6 +27,11 @@ class Model_menu:
         self.results_lfw = pd.read_csv('./result/deepface_benchmark_gender_nonperturbed.csv')
 
     def create(self, x, y):
+        """
+        Create the model menu
+        x: x coordinate of the model menu
+        y: y coordinate of the model menu
+        """
         drop = OptionMenu(
             self.window, self.model_value, *(Model_menu.MODELS_OPTIONS),
             command= lambda _: self.menu_check_btn(self.model_value)

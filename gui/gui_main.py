@@ -1,3 +1,4 @@
+# Import all relevant libraries and custom defined classes 
 from tkinter import *
 import tkinter as tk
 
@@ -9,6 +10,9 @@ from Model_menu import Model_menu
 
 
 def start_application():
+     """
+     This function starts the application of the GUI 
+     """
      # Create and configure window:
      window = tk.Tk()
      window.configure(background="#ffffff")  # background

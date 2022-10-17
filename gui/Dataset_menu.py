@@ -1,3 +1,4 @@
+# Import relavant libraries
 from tkinter import *
 import tkinter as tk
 from PIL import ImageTk, Image
@@ -55,6 +56,8 @@ class Dataset_menu:
         label = tk.Label(frame, image=img)
         label.pack()            
 
+        # Get the current selected dataset
+        # Output the thumbnail of the dataset in GUI
         Dataset_menu.CURRENT_DATASET = datasetValue.get()
         if Dataset_menu.CURRENT_DATASET == "LFW (Male)":
             img = ImageTk.PhotoImage(
