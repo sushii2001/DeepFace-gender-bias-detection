@@ -3,3 +3,6 @@ additional-data/
 weights/
 *__pycache__/
 *.ipynb_checkpoints
+*.pytest_cache
+*htmlcov
+*.coverage
