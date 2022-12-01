@@ -32,7 +32,7 @@ def get_name(image_file):
 
     try:
         # Get the name of the image file with regex
-        match = re.search(f"_\d.*\.jpg", image_file)
+        match = re.search(f"_\d.*\.(jpg|png|jpeg)", image_file)
         name = image_file.replace(match.group(0), "")
         
     except Exception:

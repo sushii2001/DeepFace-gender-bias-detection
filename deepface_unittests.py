@@ -2,13 +2,13 @@
 import unittest
 from random import randint
 
-from deepface_test_functions import *
+from deepface_main_test_func import *
 
 
 class TestName(unittest.TestCase):
 
     """
-    Unittest for functions in deepface_test_functions.py
+    Unittest for functions in deepface_main_test_func.py
     """
     
     ####### Test methods #########
@@ -109,8 +109,8 @@ class TestName(unittest.TestCase):
         """
 
         # Test instances
-        unit_test_df_pos = pd.read_csv('./data/LFW-csv/unit_test_deepface.csv')
-        unit_test_df_neg = pd.read_csv('./data/LFW-csv/unit_test_deepface_neg.csv')
+        unit_test_df_pos = pd.read_csv('./data/LFW-csv/deepface_unittests.csv')
+        unit_test_df_neg = pd.read_csv('./data/LFW-csv/deepface_unittests_neg.csv')
         models = ["Facenet512", "Facenet", "VGG-Face", "OpenFace", "DeepFace", "DeepID", "ArcFace", "Dlib", "SFace"]
         metrics = "euclidean_l2"
         backends = 'opencv'
@@ -176,18 +176,18 @@ if __name__.__contains__("__main__"):
     unittest.main()
     
     # To run this test, type in terminal:
-    # python .\unit_test_deepface.py -b
+    # python .\deepface_unittests.py -b
 
     # To run pytest, type in terminal:
-    # pytest .\unit_test_deepface.py -v
+    # pytest .\deepface_unittests.py -v
 
     # To run coverage, type in terminal:
-    # coverage run .\unit_test_deepface.py
+    # coverage run .\deepface_unittests.py
     # coverage report -m 
 
     # To run pytest-cov, type in terminal:
-    # pytest --cov=deepface_test_functions unit_testing.py -v
+    # pytest --cov=deepface_main_test_func deepface_unittests.py -v
     # To generate HTML report: 
-    # pytest --cov=deepface_test_functions unit_test_deepface.py --cov-report=html -v
+    # pytest --cov=deepface_main_test_func deepface_unittests.py --cov-report=html -v
     # To view the HTML report:
     # open htmlcov/index.html, and run Go Live in VSCode
