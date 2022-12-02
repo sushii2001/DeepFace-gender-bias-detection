@@ -109,8 +109,8 @@ class TestName(unittest.TestCase):
         """
 
         # Test instances
-        unit_test_df_pos = pd.read_csv('./data/LFW-csv/deepface_unittests.csv')
-        unit_test_df_neg = pd.read_csv('./data/LFW-csv/deepface_unittests_neg.csv')
+        unit_test_df_pos = pd.read_csv('./data/deepface_LFW_gender_csv/deepface_unittests.csv')
+        unit_test_df_neg = pd.read_csv('./data/deepface_LFW_gender_csv/deepface_unittests_neg.csv')
         models = ["Facenet512", "Facenet", "VGG-Face", "OpenFace", "DeepFace", "DeepID", "ArcFace", "Dlib", "SFace"]
         metrics = "euclidean_l2"
         backends = 'opencv'
