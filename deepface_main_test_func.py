@@ -157,11 +157,11 @@ def deepface_benchmark_lfw_split(dataset, dataset_path, benchmark_df, model_used
             perturbed_error.append({"img1": img_num_1, "img_path_1": img_path_1, "img2": img_num_2, "img_path_2": img_path_2, "Error": e})
     
     # calculate confusion matrix:
-    cm_acc = round((tp + tn) / (tp + tn + fp + fn), 2) * 100
+    cm_acc = round(((tp + tn) / (tp + tn + fp + fn)) * 100, 2) 
     # precision:
-    cm_pre = round( (tp) / (tp + fp), 2) * 100
+    cm_pre = round( ((tp) / (tp + fp)) * 100, 2)
     # recall: 
-    cm_rec = round( (tp) / (tp + fn), 2) * 100
+    cm_rec = round( ((tp) / (tp + fn)) * 100, 2)
 
     # Return the results as a dictionary and errors encountered as list
     return {"Model": model_used, "Dataset":dataset, "CM_ACC": cm_acc, "Precision":cm_pre, "Recall":cm_rec,\
